@@ -1,0 +1,21 @@
+<% keys = %w[created_at updated_at] %>
+<% vcount = @versions.count %>
+<% @versions.each.with_index(1) do |v, idx| %>
+  <div>
+    <div>
+      <%= v.id %>
+      <%= v.changeset.reject {|k,v| keys.include? k } %>
+    </div>
+
+    <div>
+      <% PaperTrail::Version.where(transaction_id: v.transaction_id).each do |a| %>
+        <%= a.id %>
+        <%= a.changeset.reject {|k,v| keys.include? k } %>
+      <% end %>
+    </div>
+
+    <% if idx < vcount %>
+    <%= link_to 'Restore to this version', restore_version_path(vid: idx), method: :post %>
+    <% end %>
+  </div>
+<% end %>

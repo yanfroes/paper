@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Edition:</strong>
+  <% @book.editions.each do |e| %>
+    <%= e.name %>
+    <%= e.cover.pic %>
+  <% end %>
+</p>
+
+<p>
+  <strong>ISBN:</strong>
+  <%= @book.isbn.number %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
