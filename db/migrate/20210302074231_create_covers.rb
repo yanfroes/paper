@@ -1,7 +1,7 @@
 class CreateCovers < ActiveRecord::Migration[6.0]
   def change
     create_table :covers do |t|
-      t.integer :edition_id
+      t.references :edition, null: false, foreign_key: true
       t.string :pic
 
       t.timestamps

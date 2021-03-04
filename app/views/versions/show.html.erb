@@ -3,19 +3,23 @@
 <% @versions.each.with_index(1) do |v, idx| %>
   <div>
     <div>
+      tx.id <%= v.transaction_id %>
+    </div>
+    <div>
       <%= v.id %>
       <%= v.changeset.reject {|k,v| keys.include? k } %>
     </div>
 
     <div>
       <% PaperTrail::Version.where(transaction_id: v.transaction_id).each do |a| %>
-        <%= a.id %>
+        <%= a.id %>, <%= v.transaction_id %>
         <%= a.changeset.reject {|k,v| keys.include? k } %>
       <% end %>
     </div>
 
     <% if idx < vcount %>
-    <%= link_to 'Restore to this version', restore_version_path(vid: idx), method: :post %>
+      <%= link_to 'Restore to this version', restore_version_path(vid: idx), method: :post %>
+      <hr>
     <% end %>
   </div>
 <% end %>

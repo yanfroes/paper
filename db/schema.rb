@@ -28,10 +28,11 @@ ActiveRecord::Schema.define(version: 2021_03_02_074231) do
   end
 
   create_table "covers", force: :cascade do |t|
-    t.integer "edition_id"
+    t.integer "edition_id", null: false
     t.string "pic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["edition_id"], name: "index_covers_on_edition_id"
   end
 
   create_table "editions", force: :cascade do |t|
@@ -43,10 +44,11 @@ ActiveRecord::Schema.define(version: 2021_03_02_074231) do
   end
 
   create_table "isbns", force: :cascade do |t|
-    t.integer "book_id"
+    t.integer "book_id", null: false
     t.string "number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_isbns_on_book_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -79,5 +81,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_074231) do
 
   add_foreign_key "authorships", "books"
   add_foreign_key "authorships", "people"
+  add_foreign_key "covers", "editions"
   add_foreign_key "editions", "books"
+  add_foreign_key "isbns", "books"
 end
