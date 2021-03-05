@@ -15,7 +15,7 @@ class BooksController < ApplicationController
     @book = Book.new
     @book.authorships.build
     edition = @book.editions.build
-    edition.build_cover
+    edition.covers.build
     @book.build_isbn
   end
 
@@ -73,7 +73,7 @@ class BooksController < ApplicationController
         authorships_attributes: [ :id, :person_id ],
         isbn_attributes: [ :id, :number ],
         editions_attributes: [ :id, :name,
-                               cover_attributes: [ :id, :pic ]
+                               covers_attributes: [ :id, :pic ]
         ]
       )
     end

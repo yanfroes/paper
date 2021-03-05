@@ -9,7 +9,7 @@ class Book < ApplicationRecord
   has_many :editions, dependent: :destroy
   accepts_nested_attributes_for :editions
 
-  has_many :covers, through: :editions, source: :cover, autosave: true
+  has_many :covers, through: :editions, source: :covers, autosave: true
 
   has_one :isbn, inverse_of: :book, dependent: :destroy
   accepts_nested_attributes_for :isbn

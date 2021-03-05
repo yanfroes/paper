@@ -6,10 +6,17 @@
 </p>
 
 <p>
+  <strong>Author:</strong>
+  <% @book.authors.each do |a| %>
+    <%= a.name %>
+  <% end %>
+</p>
+
+<p>
   <strong>Edition:</strong>
   <% @book.editions.each do |e| %>
     <%= e.name %>
-    <%= e.cover.pic %>
+    <%= e.covers.pluck :pic %>
   <% end %>
 </p>
 

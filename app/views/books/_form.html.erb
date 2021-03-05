@@ -28,8 +28,8 @@
       <%= e.label :name, 'Edition' %>
       <%= e.text_field :name %>
       <div>
-      <%= e.fields_for :cover do |c| %>
-        <%= e.label :name, 'Cover' %>
+      <%= e.fields_for :covers do |c| %>
+        <%= c.label :pic, 'Cover' %>
         <%= c.text_field :pic %>
       <% end %>
       </div>

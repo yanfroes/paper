@@ -22,13 +22,13 @@ class VersionsController < ApplicationController
     item.versions[vid].reify(has_many: true, has_one: true).save!
 
     # restore cover
-    tid = version.transaction_id
-    bc = PaperTrail::Version.where(item_type: 'Cover', transaction_id: tid).first
-    bc.reify.save!
-
-    # change transaction_id for cover
-    nid = PaperTrail::Version.where(item_type: version.item_type).reorder('created_at desc').first.transaction_id
-    item.editions.first.cover.versions.last.update! transaction_id: nid
+    # tid = version.transaction_id
+    # bc = PaperTrail::Version.where(item_type: 'Cover', transaction_id: tid).first
+    # bc.reify.save!
+    #
+    # # change transaction_id for cover
+    # nid = PaperTrail::Version.where(item_type: version.item_type).reorder('created_at desc').first.transaction_id
+    # item.editions.first.cover.versions.last.update! transaction_id: nid
 
     redirect_to version_path(item.versions.last)
     #redirect_back fallback_location: root_path

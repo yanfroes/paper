@@ -21,7 +21,7 @@
           <br>
           Edition:
           <% book.editions.each do |e| %>
-            <%= e.name %>, <%= e.cover.pic %>
+            <%= e.name %>, <%= e.covers.pluck :pic %>
           <% end %>
           <br>
           ISBN:
