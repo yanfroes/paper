@@ -8,20 +8,32 @@ Book
 
 - has_many authors through authorships
 - has_many editions 
-  - has_one cover
+  - has_one cover -> changed to has_many
 - has_one isbn
+- has_many covers -> added in order for the PT-AT gem to work
+
+Edittion
+
+- has_one cover -> changed to has_many
 
 Person
 
 - has_many books through authorships
 
-## How to use
+## setup
+
+1. `bundle install`
+2. `rails db:create`
+3. `rails db:migrate`
+4. `rails db:seed` # optional, will create sample person
+
+## How to use the app
 
 - Create a new Person.
 - Create a new Book.
 - Input Book data, save the Book.
-- Edit the newly created Book, and save the Book.
-- Click Versions of the Book.
+- Edit the created Book, change the cover value, then save the Book.
+- Click Versions of the book.
 - Click Restore to this version.
 
 ## Expected behavior
@@ -30,7 +42,9 @@ The Restore should be able to restore all associations, including edition cover.
 
 ## Current behavior
 
-The Restore can restore all associations but the edition cover.
+~~The Restore can restore all associations but the edition cover.~~
+
+The Restore can now restore cover, too!
 
 ## Possible issue
 
