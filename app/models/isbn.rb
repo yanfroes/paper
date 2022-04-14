@@ -1,4 +1,4 @@
 class Isbn < ApplicationRecord
-  has_paper_trail
   belongs_to :book
+  has_paper_trail
 end

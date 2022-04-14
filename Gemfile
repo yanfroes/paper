@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'paper_trail'
 gem 'paper_trail-association_tracking'
+gem 'deep_cloneable', '~> 3.2.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
